@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Sun Apr  7 23:47:59 2019
+Created on Mon Apr  8 08:23:02 2019
 
 @author: danilo
-
-"""       
+"""
+       
 def days(year):
     a=year%19
     b=year%4
@@ -14,21 +14,10 @@ def days(year):
     e=(2*b+4*c+6*d+5)%7
     day=81+d+e
     return day
-    
-def bisiesto(year):
-    if (year%4==0):
-        if (year%100==0):
-            if (year%400==0):
-                return True
-            else:
-                return False
-        else:
-            return True
-    else:
-        return False
 
 def date(year):
     day=days(year)
+    day=day-7
     if(day>31):
         day=day-31
         if(day>28):
@@ -83,8 +72,12 @@ def main():
     flag=True
     while(flag==True):
         year=eval(input("Give me a year in a range (1982-2048): "))
-        if(year>=1982 and year<=2048):
-            date(year)
+        if(year>=1800 and year<=2099):
+            
+            if(year==1954 or year==1981 or year==2049 or year==2076):
+                date(year)
+            else:
+                date(year)
             flag=False
             
         else:
